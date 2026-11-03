@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+repositories {
+    maven { url 'https://maven.fabricmc.net/' }
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly files('C:/Users/MjAdo/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged-deobf/26.3/minecraft-merged-deobf-26.3.jar')
+    compileOnly fileTree(dir: 'C:/Users/MjAdo/.gradle/caches/modules-2/files-2.1/org.lwjgl', include: '**/*.jar')
+    compileOnly fileTree(dir: 'C:/Users/MjAdo/.gradle/caches/modules-2/files-2.1/org.slf4j', include: '**/*.jar')
+    compileOnly fileTree(dir: 'C:/Users/MjAdo/.gradle/caches/modules-2/files-2.1/net.fabricmc', include: '**/sponge-mixin*.jar')
+    implementation 'net.fabricmc:fabric-loader:0.20.1'
+    implementation 'net.fabricmc.fabric-api:fabric-api:0.165.0+26.3'
+}
+
+processResources {
+    inputs.property 'version', '1.0.0'
+    filesMatching('fabric.mod.json') {
+        expand version: '1.0.0'
+    }
+}
